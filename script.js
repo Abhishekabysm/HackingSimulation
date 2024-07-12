@@ -12,7 +12,6 @@ let hackingText = [
 
 const terminal = document.getElementById("terminal");
 const statusText = document.getElementById("statusText");
-
 const addItem = async (item) => {
   await randomDelay();
   let div = document.createElement("div");
@@ -24,19 +23,19 @@ const addItem = async (item) => {
   }, 100);
 
   let t = setInterval(() => {
-    if (div.innerHTML.endsWith("...")) {
-      div.innerHTML = div.innerHTML.slice(0, div.innerHTML.length - 3);
+    if (div.innerHTML.endsWith("|")) {
+      div.innerHTML = div.innerHTML.slice(0, div.innerHTML.length - 1);
     } else {
-      div.innerHTML = div.innerHTML + ".";
+      div.innerHTML = div.innerHTML + "|";
     }
   }, 200);
 
   setTimeout(() => {
     clearInterval(t);
-    if (div.innerHTML.endsWith("...")) {
-      div.innerHTML = div.innerHTML.slice(0, div.innerHTML.length - 3);
+    if (div.innerHTML.endsWith("|")) {
+      div.innerHTML = div.innerHTML.slice(0, div.innerHTML.length - 1);
     }
-  }, 3000);
+  }, 2000);
 };
 
 const randomDelay = () => {
