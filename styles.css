@@ -1,18 +1,53 @@
 body {
-  background-color: #000;
-  color: #0f0;
+  background-color: #0c0c0c;
+  color: #00ff00;
   font-family: "Courier New", Courier, monospace;
   margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #00ff00;
+  border-radius: 10px;
   padding: 20px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00ff00;
 }
 
 #terminal {
-  font-size: 18px;
-  line-height: 1.5;
+  background-color: #000;
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+  padding: 10px;
+  height: 300px;
+  /* overflow-y: auto; */
+  margin-bottom: 10px;
+}
+
+#status {
+  text-align: center;
+  font-weight: bolder;
 }
 
 .message {
   margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.message.visible {
+  opacity: 1;
 }
 
 .blink {
@@ -20,7 +55,17 @@ body {
 }
 
 @keyframes blink {
-  50% {
+  0% {
     opacity: 0;
   }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.white-color {
+  color: white;
 }
