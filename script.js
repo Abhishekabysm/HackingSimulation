@@ -12,6 +12,7 @@ let hackingText = [
 
 const terminal = document.getElementById("terminal");
 const statusText = document.getElementById("statusText");
+
 const addItem = async (item) => {
   await randomDelay();
   let div = document.createElement("div");
