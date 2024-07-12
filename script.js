@@ -28,7 +28,7 @@ const addItem = async (item) => {
     } else {
       div.innerHTML = div.innerHTML + "|";
     }
-  }, 200);
+  }, 500);
 
   setTimeout(() => {
     clearInterval(t);
