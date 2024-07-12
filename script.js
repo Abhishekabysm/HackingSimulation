@@ -1,16 +1,27 @@
 let hackingText = [
-  "Reading your files",
-  "Password files detected",
-  "Sending all files and passwords to server",
-  "Cleaning up",
+  "searching nearby devices",
+  "one device found named 'Infinix Hot 30I'",
+  "connecting to 'Infinix Hot 30I'",
+  "fetching details from 'Infinix Hot 30I'",
+  "instagram details fetching in progress",
+  "username: 'Abhishekabyusm' fetched",
+  "downloading photos, videos and messages",
+  "All item fetched",
+  "disconnecting from 'Infinix Hot 30I'",
 ];
+
+const terminal = document.getElementById("terminal");
+const statusText = document.getElementById("statusText");
 
 const addItem = async (item) => {
   await randomDelay();
   let div = document.createElement("div");
   div.classList.add("message");
-  div.textContent = item;
+  div.innerHTML = item;
   terminal.appendChild(div);
+  setTimeout(() => {
+    div.classList.add("visible");
+  }, 100);
 
   let t = setInterval(() => {
     if (div.innerHTML.endsWith("...")) {
@@ -29,7 +40,7 @@ const addItem = async (item) => {
 };
 
 const randomDelay = () => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     let timeout = 1000 + 2000 * Math.random();
     setTimeout(resolve, timeout);
   });
@@ -37,12 +48,14 @@ const randomDelay = () => {
 
 async function main() {
   for (const item of hackingText) {
+    statusText.textContent = "In Progress";
+    statusText.classList.add("blink");
     await addItem(item);
   }
-  let finalMessage = document.createElement("div");
-  finalMessage.textContent = "Hacking successful!";
-  finalMessage.classList.add("message", "blink");
-  terminal.appendChild(finalMessage);
+  await randomDelay();
+  statusText.textContent = "Completed";
+  statusText.classList.remove("blink");
+  addItem("[Hacking Successful]");
 }
 
 main();
