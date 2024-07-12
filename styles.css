@@ -69,3 +69,19 @@ body {
 .white-color {
   color: white;
 }
+
+.blinking-cursor {
+  position: relative;
+  color: white;
+  /* position: absolute; */
+  animation: blink2 0.7s infinite alternate; /* Blinking animation */
+}
+
+@keyframes blink2 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
