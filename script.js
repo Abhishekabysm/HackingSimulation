@@ -17,11 +17,16 @@ const addItem = async (item) => {
   await randomDelay();
   let div = document.createElement("div");
   div.classList.add("message");
-  div.innerHTML = item;
+  // div.innerHTML = item;
   terminal.appendChild(div);
   setTimeout(() => {
     div.classList.add("visible");
   }, 100);
+
+  for (let i = 0; i < item.length; i++) {
+    await typeDelay();
+    div.innerHTML += item[i];
+  }
 
   let t = setInterval(() => {
     if (div.innerHTML.endsWith("|")) {
@@ -42,6 +47,13 @@ const addItem = async (item) => {
 const randomDelay = () => {
   return new Promise((resolve, reject) => {
     let timeout = 1000 + 2000 * Math.random();
+    setTimeout(resolve, timeout);
+  });
+};
+
+const typeDelay = () => {
+  return new Promise((resolve) => {
+    let timeout = 40 + Math.random() * 50;
     setTimeout(resolve, timeout);
   });
 };
